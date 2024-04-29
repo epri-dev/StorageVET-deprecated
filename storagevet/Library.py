@@ -127,6 +127,7 @@ def create_timeseries_index(years, frequency):
     years = np.sort(years)
     for year in years:
         new_index = pd.date_range(start=f"1/1/{int(year)}", end=f"1/1/{int(year + 1)}", freq=frequency, closed='left')
+        new_index = new_index[(new_index.day != 29) | (new_index.month != 2)]
         temp_df = pd.DataFrame(index=new_index)
 
         # add new year to original data frame

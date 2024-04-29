@@ -518,7 +518,7 @@ class Scenario(object):
                     prob.solve(verbose=self.verbose_opt, solver=cvx.GLPK_MI)
                 else:
                     TellUser.debug("ecos_bb solver")
-                    prob.solve(verbose=self.verbose_opt, solver=cvx.ECOS_BB)
+                    prob.solve(verbose=self.verbose_opt, solver=cvx.SCIPY)
                 end = time.time()
                 TellUser.info("Time it takes for solver to finish: " + str(end - start))
         except (cvx.error.SolverError, RuntimeError) as e:

@@ -1334,7 +1334,7 @@ class Params:
             return time_series
 
         # check that leap years are taken into account, else tell the user
-        hours_in_years = [8784 if is_leap_yr(data_year) else 8760 for data_year in yr_included]
+        hours_in_years = [8760] * len(yr_included)
         expected_data_length = sum(hours_in_years) / dt
         if len(time_series) != expected_data_length:
             self.record_timeseries_data_error(
